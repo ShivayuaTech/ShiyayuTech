@@ -1,0 +1,46 @@
+import colorama
+from colorama import Fore, Back, Style
+import pyfiglet
+
+# Initialize colorama
+colorama.init(autoreset=True)
+
+# Function to print colored ASCII art
+def print_ascii_art(art, color):
+    colored_art = getattr(Fore, color.upper()) + art
+    print(colored_art)
+
+# Function to print a section with a title
+def print_section(title, color):
+    section_width = 60
+    section_title = f" {title} "
+    section_title = section_title.center(section_width, "=")
+    print(Fore.WHITE + Back.BLACK + section_title)
+    print_ascii_art(" " * section_width, color)
+    print_ascii_art(" " * section_width, color)
+
+# Main code
+if __name__ == "__main__":
+    # Print header
+    header_text = pyfiglet.figlet_format("My GitHub Home")
+    print(Fore.YELLOW + header_text)
+
+    # Print sections
+    print_section("About Me", "cyan")
+    print("I'm a passionate developer with expertise in Python.")
+
+    print_section("Projects", "green")
+    print("1. Project A: A web scraping tool")
+    print("2. Project B: A machine learning model")
+
+    print_section("Skills", "magenta")
+    print("Programming Languages: Python, JavaScript, Java")
+    print("Frameworks: Django, React, Spring")
+
+    print_section("Contact", "blue")
+    print("Email: example@example.com")
+    print("GitHub: github.com/example")
+
+    # Print footer
+    footer_text = "Thanks for visiting!"
+    print(Fore.YELLOW + Back.BLACK + footer_text.center(60, "="))
